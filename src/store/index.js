@@ -3,19 +3,25 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import categorie from './categories'
 import product from './product'
+import cart from './cart'
 
 
 
 
 
 
+let reducer = combineReducers({categorie,product,cart});
+console.log(reducer);
 
-let reducer = combineReducers({categorie,product});
-const categories=()=>{
-    return createStore(reducer,composeWithDevTools);
+const store =()=>{
+    return createStore(reducer,composeWithDevTools())
+}
 
-};
-export default categories();
+// const store =()=>{
+//     return createStore (reducer,composeWithDevTools);
+
+// };
+export default store ();
 
 
 

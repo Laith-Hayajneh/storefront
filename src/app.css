@@ -6,3 +6,11 @@
     margin: auto;
     display: inline-block;
 }
+
+.cart{
+    float: right;
+    border: solid red;
+    align-self: center;
+           
+    
+}

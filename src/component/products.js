@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { connect } from 'react-redux';
+import { addToCart } from "../store/cart";
 
 
 const Product = props => {
@@ -50,7 +51,7 @@ const Product = props => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small">Share</Button>
+                                    <Button onClick={()=>{props.addToCart(product)}} size="small">Add To Cart</Button>
                                     <Button size="small">Learn More</Button>
                                 </CardActions>
                             </Card>
@@ -70,7 +71,7 @@ const mapStateToProps = state => ({
     product: state.product,
     categorie: state.categorie
 });
-// const mapDispatchToProps = { food, console, electronic, phones };
+const mapDispatchToProps = { addToCart };
 
 
-export default connect(mapStateToProps)(Product)
+export default connect(mapStateToProps,mapDispatchToProps)(Product)

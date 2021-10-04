@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import { laith, food, electronic, console, phones } from "../store/categories";
+import { addToCart } from "../store/cart";
 import { Navbar, Nav, Container } from 'react-bootstrap/'
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import { Route,  Switch ,Link} from "react-router-dom";
 
 
 const Category = props => {
@@ -17,6 +19,7 @@ const Category = props => {
     return (
 
         <section>
+           
             <Navbar bg="primary" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">Browse our Categories</Navbar.Brand>
@@ -29,6 +32,8 @@ const Category = props => {
                         <Nav.Link href="#console" onClick={() => { props.console('console') }}>Console</Nav.Link>
 
                         <Nav.Link href="#phones" onClick={() => { props.phones('phones') }}>Phones</Nav.Link>
+                        <Nav.Link href="#cart" onClick={() => {  }}>cart</Nav.Link>
+                        
 
                     
                     </Nav>
@@ -72,6 +77,6 @@ const mapStateToProps = state => ({
     categorie: state.categorie
 
 });
-const mapDispatchToProps = { food, console, electronic, phones };
+const mapDispatchToProps = { food, console, electronic, phones,addToCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category)

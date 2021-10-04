@@ -1,23 +1,22 @@
 // food electronic console phones 
 let categories={
     food:[
-        {name:'food'},
-        {description:"All kind of food are here"}
+        {name:'FOOD',description:"All kind of food are here"},
+       
  
     ],
     electronic:[
-        {name:'electronic'},
-        {description:"All kind of food are here"}
+        {name:'ELECTRONIC',description:"All kind of electronic are here"}
  
     ]
     ,console:[
-        {name:'console'},
-        {description:"All kind of food are here"}
+        {name:'CONSOLE',description:"All kind of console are here"}
+        
  
     ]
     ,phones:[
-        {name:'phones'},
-        {description:"All kind of food are here"}
+        {name:'PHONES',description:"All kind of phones are here"}
+         
  
     ],
     activeCategory:''
@@ -27,7 +26,8 @@ let categore=categories
 export default (state=categories,action)=>{
     let {type,payload}=action;
     switch (type) {
-        case 'food':
+        case 'Cfood':
+            categories.activeCategory=payload
               activeCategory=categories.activeCategory;
               categore=categories.food.map(food=>{
                 if (food.name === payload){
@@ -40,10 +40,12 @@ export default (state=categories,action)=>{
             });
             return {activeCategory,categore}
         /////////////////////////    
-        case 'electronic':
+        case 'Celectronic':
+            categories.activeCategory=payload
+
               activeCategory=categories.activeCategory;
               categore=categories.electronic.map(electronic=>{
-                if (electronic.name === payload){
+                if (electronic.name == payload){
                     return{
                         name:electronic.name,
                         description:electronic.description
@@ -54,7 +56,9 @@ export default (state=categories,action)=>{
             return {activeCategory,categore}
         /////////////////////////    
 
-        case 'console':
+        case 'Cconsole':
+            categories.activeCategory=payload
+
               activeCategory=categories.activeCategory;
               categore=categories.console.map(console=>{
                 if (console.name === payload){
@@ -68,7 +72,10 @@ export default (state=categories,action)=>{
             return {activeCategory,categore}
         /////////////////////////    
 
-        case 'phones':
+        case 'Cphones':
+            categories.activeCategory=payload
+
+            // alert(payload,'payload')
               activeCategory=categories.activeCategory;
               categore=categories.phones.map(phones=>{
                 if (phones.name === payload){
@@ -83,8 +90,7 @@ export default (state=categories,action)=>{
             
         case 'active':
             categories.activeCategory=payload    
-            
-    
+         
         default:
             return state
     }
@@ -97,26 +103,26 @@ export default (state=categories,action)=>{
 
 export const food = (name) => {
     return {
-        type: 'food',
+        type: 'Cfood',
         payload: name
     };
 };
 
 export const electronic = (name) => {
     return {
-        type: 'electronic',
+        type: 'Celectronic',
         payload: name
     };
 };
 export const console = (name) => {
     return {
-        type: 'console',
+        type: 'Cconsole',
         payload: name
     };
 };
 export const phones = (name) => {
     return {
-        type: 'phones',
+        type: 'Cphones',
         payload: name
     };
 };
@@ -127,3 +133,9 @@ export const active =(name)=>{
         payload: name
     }
 }
+
+// export const laith=()=>{
+//     return{
+//         type:'laith'
+//     }
+// }

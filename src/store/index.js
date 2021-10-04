@@ -11,11 +11,17 @@ import product from './product'
 
 
 let reducer = combineReducers({categorie,product});
-const categories=()=>{
-    return createStore(reducer,composeWithDevTools);
+console.log(reducer);
 
-};
-export default categories();
+const store =()=>{
+    return createStore(reducer,composeWithDevTools())
+}
+
+// const store =()=>{
+//     return createStore (reducer,composeWithDevTools);
+
+// };
+export default store ();
 
 
 

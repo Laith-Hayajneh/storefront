@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
-import { food, electronic, console, phones } from "../store/categories";
+import { laith, food, electronic, console, phones } from "../store/categories";
 import { Navbar, Nav, Container } from 'react-bootstrap/'
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
 
 
 const Category = props => {
     let activeCat = '';
-    // console.log('s')
+    // console.log(props)
     // alert(props.categorie.food[0].name)
+    // alert(props.categorie.activeCategory)
 
     return (
 
@@ -16,24 +22,49 @@ const Category = props => {
                     <Navbar.Brand href="#home">Browse our Categories</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="#Food" onClick={() => {
-                            props.categorie.activeCategory = 'food'
+                            props.food('food')
                             return
                         }}>Food</Nav.Link>
-                        <Nav.Link href="#electronic" onClick={() => { props.categorie.activeCategory = 'electronic' }} >electronic</Nav.Link>
-                        <Nav.Link href="#console" onClick={() => { props.categorie.activeCategory = 'console' }}>console</Nav.Link>
-                        <Nav.Link href="#phones" onClick={() => { props.categorie.activeCategory = 'phones' }}>phones</Nav.Link>
+                        <Nav.Link href="#electronic" onClick={() => { props.electronic('electronic') }} >Electronic</Nav.Link>
+                        <Nav.Link href="#console" onClick={() => { props.console('console') }}>Console</Nav.Link>
+
+                        <Nav.Link href="#phones" onClick={() => { props.phones('phones') }}>Phones</Nav.Link>
+
+                    
                     </Nav>
                 </Container>
             </Navbar>
-            <button onClick={() => { alert(props.categorie.activeCategory) }} >fff</button>
-            {activeCat == 'food' && props.categorie.food.map(fo => <p>{fo.description}</p>)}
+            {/* <button onClick={() => { alert(props.categorie.activeCategory) }} >fff</button> */}
 
-            {/* {props.categorie.food.map(fo=><p>{fo.description}</p>)} */}
 
-            {/* {props.categorie.activeCat.map(food => <p>
-                {food.name}
-            </p>)} */}
-            laith category
+
+            {props.categorie.activeCategory !== '' &&
+                props.categorie.categore.map(active => {
+                    return (
+                        <div style={{ "margin-left": "auto", "margin-right": "auto","align-items":"center" }}>
+
+
+                            <Card className='bigcard' sx={{ minWidth: 275,ml:10 }}>
+                                <CardContent>
+                                    <Typography sx={{ fontSize: 70 }} color="text.secondary" gutterBottom>
+                                        {active.name}
+                                    </Typography>
+                                   
+                                    <Typography sx={{ mb: 0.5, }} color="text.secondary">
+                                        {active.description}
+                                    </Typography>
+                                   
+                                </CardContent>
+                               
+                            </Card>
+                        </div>
+                    )
+                })
+
+            }
+
+
+            {/* laith category */}
         </section>
     )
 };

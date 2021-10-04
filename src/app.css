@@ -1,0 +1,8 @@
+.pDiv{
+    /* border:solid red; */
+    display: inline-block;
+}
+.pDiv2{
+    margin: auto;
+    display: inline-block;
+}
